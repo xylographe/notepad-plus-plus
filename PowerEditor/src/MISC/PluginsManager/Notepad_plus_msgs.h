@@ -429,6 +429,19 @@ enum Platform { PF_UNKNOWN, PF_X86, PF_X64, PF_IA64 };
 	// Users should call it with pluginRootPath be NULL to get the required number of TCHAR (not including the terminating nul character),
 	// allocate pluginRootPath buffer with the return value + 1, then call it again to get the path.
 
+	#define BUFSTAT_READONLY     0x01
+	#define BUFSTAT_MODIFIED     0x02
+	#define BUFSTAT_LOADEDDIRTY  0x04
+	#define NPPM_GETBUFFERSTATUS (NPPMSG + 98)
+	// LRESULT NPPM_GETBUFFERSTATUS(UINT_PTR bufferID, 0)
+	// wParam: BufferID to get Status
+	// lParam: 0
+	// Return value is an LRESULT with bit flags
+	// BUFSTAT_READONLY    = 0x01 (Bit 0) set when Buffer is readonly
+	// BUFSTAT_MODIFIED    = 0x02 (Bit 1) set when Buffer is modified
+	// BUFSTAT_LOADEDDIRTY = 0x04 (Bit 2) set when Buffer is dirty
+	// or -1 when bufferId is invalid
+
 #define	RUNCOMMAND_USER    (WM_USER + 3000)
 	#define NPPM_GETFULLCURRENTPATH		(RUNCOMMAND_USER + FULL_CURRENT_PATH)
 	#define NPPM_GETCURRENTDIRECTORY	(RUNCOMMAND_USER + CURRENT_DIRECTORY)
