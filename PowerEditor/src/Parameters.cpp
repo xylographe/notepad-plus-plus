@@ -36,8 +36,6 @@
 #include "localizationString.h"
 #include "UserDefineDialog.h"
 
-#pragma warning(disable : 4996) // for GetVersionEx()
-
 using namespace std;
 
 
@@ -739,10 +737,12 @@ winVer NppParameters::getWindowsVersion()
 	ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
 
 	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
+#pragma warning(suppress : 4996) // for GetVersionEx()
 	BOOL bOsVersionInfoEx = GetVersionEx ((OSVERSIONINFO *)&osvi);
 	if (!bOsVersionInfoEx)
 	{
 		osvi.dwOSVersionInfoSize = sizeof (OSVERSIONINFO);
+#pragma warning(suppress : 4996) // for GetVersionEx()
 		if (! GetVersionEx ( (OSVERSIONINFO *) &osvi) )
 			return WV_UNKNOWN;
 	}

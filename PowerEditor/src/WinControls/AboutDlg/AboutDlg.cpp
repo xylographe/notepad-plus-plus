@@ -34,8 +34,6 @@
 #include "Parameters.h"
 #include "localization.h"
 
-#pragma warning(disable : 4996) // for GetVersion()
-
 INT_PTR CALLBACK AboutDlg::run_dlgProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message)
@@ -204,6 +202,7 @@ INT_PTR CALLBACK DebugInfoDlg::run_dlgProc(UINT message, WPARAM wParam, LPARAM /
 			}
 			if (szCurrentBuildNumber[0] == '\0')
 			{
+#pragma warning(suppress : 4996) // for GetVersion()
 				DWORD dwVersion = GetVersion();
 				if (dwVersion < 0x80000000)
 				{
