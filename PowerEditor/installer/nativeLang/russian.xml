@@ -403,8 +403,8 @@ Updated to v7.8.7:
 				<Item id="1688" name="Всегда"/>
 				<Item id="1703" name="и новые строки"/>
 				<Item id="1722" name="Обратное направление поиска"/>
-				<Item id="1721" name="▲"/> 
-				<Item id="1723" name="▼"/> 
+				<Item id="1721" name="&lt;&lt;  "/> 
+				<Item id="1723" name="  &gt;&gt;"/> 
 			</Find>
 
 			<FindCharsInRange title = "Найти символы в диапазоне....">

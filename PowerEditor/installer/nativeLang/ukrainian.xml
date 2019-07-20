@@ -395,8 +395,8 @@
                 <Item id="1641" name="Знайти все в поточному документі"/>
                 <Item id="1686" name="Прозорість"/>
                 <Item id="1703" name="&amp;. новий рядок"/>
-				<Item id="1721" name="▲"/>
-                <Item id="1723" name="▼ Знайти далі"/>
+                <Item id="1721" name="&lt;&lt;  "/>
+                <Item id="1723" name="  &gt;&gt;"/>
             </Find>
 
             <FindCharsInRange title="Знайти символи в діапазоні...">

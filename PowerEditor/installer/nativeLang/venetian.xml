@@ -400,8 +400,8 @@
                 <Item id="1641" name="Cata tuto cuanto ne&apos;l documento corente"/>
                 <Item id="1686" name="T&amp;rasparensa"/>
                 <Item id="1703" name="&amp;. vol dire &apos;a capo&apos;"/>
-                <Item id="1721" name="▲"/>
-                <Item id="1723" name="▼ Cata el seguente"/>
+                <Item id="1721" name="&lt;&lt;  "/>
+                <Item id="1723" name="  &gt;&gt;"/>
             </Find>
 
             <FindCharsInRange title="Ruma caràtari...">

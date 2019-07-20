@@ -395,8 +395,8 @@
                 <Item id="1641" name="सबै वर्तमान कागजातमा फेला पार्नुहोस्"/>
                 <Item id="1686" name="पारदर्शिता"/>
                 <Item id="1703" name="&amp;. नयाँ रेखासँग मेल खान्छ"/>
-				<Item id="1721" name="▲"/>
-                <Item id="1723" name="▼अर्को खोज्नुहोस्"/>
+                <Item id="1721" name="&lt;&lt;  "/>
+                <Item id="1723" name="  &gt;&gt;"/>
             </Find>
 
             <FindCharsInRange title="दायरामा पात्रहरू फेला पार्नुहोस्...">

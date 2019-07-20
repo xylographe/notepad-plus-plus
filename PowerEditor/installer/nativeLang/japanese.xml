@@ -401,8 +401,8 @@
                 <Item id="1641" name="現在の文書内で検索"/>
                 <Item id="1686" name="透明化(&amp;Y)"/>
                 <Item id="1703" name="&amp;.は改行と一致"/>
-                <Item id="1721" name="▲"/>
-                <Item id="1723" name="▼ 次を検索"/>
+                <Item id="1721" name="&lt;&lt;  "/>
+                <Item id="1723" name="  &gt;&gt;"/>
             </Find>
 
             <FindCharsInRange title="文字範囲を指定して検索...">

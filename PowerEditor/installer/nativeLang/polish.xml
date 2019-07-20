@@ -398,8 +398,8 @@
                 <Item id="1641" name="Znajdź w bieżącym dokumencie"/>
                 <Item id="1686" name="&amp;Przeźroczystość okna"/>
                 <Item id="1703" name="&amp;. jako nowa linia"/>
-                <Item id="1721" name="▲"/>
-                <Item id="1723" name="▼ Następne wystąpienie"/>
+                <Item id="1721" name="&lt;&lt;  "/>
+                <Item id="1723" name="  &gt;&gt;"/>
             </Find>
 
             <FindCharsInRange title="Zakres zestawu znaków...">

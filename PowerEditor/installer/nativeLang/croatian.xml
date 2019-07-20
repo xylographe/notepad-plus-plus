@@ -427,8 +427,8 @@
                     <Item id="1641" name="Pronađi sve u tekućem dokumentu"/>
                     <Item id="1686" name="&amp;Prozirnost"/>
                     <Item id="1703" name="&amp;. je novi redak"/>
-                    <Item id="1721" name="▲"/>
-                    <Item id="1723" name="▼ Nađi sljedeće"/>
+                    <Item id="1721" name="&lt;&lt;  "/>
+                    <Item id="1723" name="  &gt;&gt;"/>
 
             </Find>
 

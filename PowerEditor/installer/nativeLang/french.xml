@@ -391,8 +391,8 @@
                 <Item id="1688" name="persistante"/>
                 <Item id="1703" name="&amp;. comprend ligne nouvelle"/>
                 <Item id="2" name="Annuler"/>
-                <Item id="1721" name="▲"/>
-                <Item id="1723" name="▼ Suivant"/>
+                <Item id="1721" name="&lt;&lt;  "/>
+                <Item id="1723" name="  &gt;&gt;"/>
             </Find>
 
             <FindCharsInRange title="Rechercher des caractères dans une plage">
