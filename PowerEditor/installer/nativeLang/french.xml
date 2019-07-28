@@ -1235,6 +1235,7 @@ Rechercher dans tous les fichiers sauf exe, obj &amp;&amp; log:
             <summary-filepath value="Chemin d'accès : "/>
             <summary-filecreatetime value="Date de Création : "/>
             <summary-filemodifytime value="Date de Modification : "/>
+            <summary-filelen value="Taille du fichier : "/>
             <summary-nbchar value="Caractères (sans fin de ligne) : "/>
             <summary-nbword value="Mots : "/>
             <summary-nbline value="Lignes : "/>

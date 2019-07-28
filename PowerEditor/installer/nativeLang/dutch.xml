@@ -1508,6 +1508,9 @@
 			<summary-filemodifytime
 				value="Gewijzigd: "
 			/>
+			<summary-filelen
+				value="Bestandsgrootte (in byte): "
+			/>
 			<summary-nbchar
 				value="Lettertekens: "
 			/>
