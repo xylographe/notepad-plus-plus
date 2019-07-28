@@ -1786,6 +1786,7 @@ Le texte collé dans ce champ contient des caractères invisibles (peut-être de
 			<userdefined-title-save value="Enregistrer langage actuel sous..."/>
 			<userdefined-title-rename value="Renommer langage actuel"/>
 			<summary value="Statistiques"/>
+			<summary-filelen value="Taille du fichier : "/>
 			<summary-filepath value="Chemin d’accès : "/>
 			<summary-filecreatetime value="Date de création : "/>
 			<summary-filemodifytime value="Date de modification : "/>
