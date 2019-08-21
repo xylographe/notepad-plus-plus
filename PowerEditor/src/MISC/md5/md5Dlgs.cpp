@@ -24,31 +24,72 @@
 #include "Parameters.h"
 #include <shlwapi.h>
 
+INT_PTR HashDialog::run_dlgProc(UINT message)
+{
+	if (message == WM_INITDIALOG)
+	{
+		const auto fontDpiDynamicalHeight = NppParameters::getInstance()._dpiManager.scaleY(13);
+		const auto hFont = ::CreateFontA(fontDpiDynamicalHeight, 0, 0, 0, 0, FALSE, FALSE, FALSE,
+			ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+			DEFAULT_PITCH | FF_DONTCARE, "Courier New");
+
+		const auto hHashOrigin = ::GetDlgItem(_hSelf, _originEditID);
+		const auto hHashResult = ::GetDlgItem(_hSelf, _resultEditID);
+
+		::SendMessage(hHashOrigin, WM_SETFONT, reinterpret_cast<WPARAM>(hFont), TRUE);
+		::SendMessage(hHashResult, WM_SETFONT, reinterpret_cast<WPARAM>(hFont), TRUE);
+
+		::SetWindowLongPtr(hHashOrigin, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
+		_oldHashOriginProc = reinterpret_cast<WNDPROC>(::SetWindowLongPtr(hHashOrigin, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HashOriginStaticProc)));
+
+		::SetWindowLongPtr(hHashResult, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
+		_oldHashResultProc = reinterpret_cast<WNDPROC>(::SetWindowLongPtr(hHashResult, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HashResultStaticProc)));
+
+		return TRUE;
+	}
+	return FALSE;
+}
+
+LRESULT HashDialog::run_textEditProc(WNDPROC oldEditProc, HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message)
+	{
+		case WM_GETDLGCODE:
+		{
+			return DLGC_WANTALLKEYS | ::CallWindowProc(oldEditProc, hwnd, message, wParam, lParam);
+		}
+
+		case WM_CHAR:
+		{
+			if (wParam == 1) // Ctrl+A
+			{
+				::SendMessage(hwnd, EM_SETSEL, 0, -1);
+				return TRUE;
+			}
+			break;
+		}
+
+		default:
+			break;
+	}
+	return ::CallWindowProc(oldEditProc, hwnd, message, wParam, lParam);
+}
+
+void HashDialog::setHashType(hashType newHashType)
+{
+	_ht = newHashType;
+}
+
+HashFromFilesDlg::HashFromFilesDlg()
+{
+	_originEditID = IDC_HASH_PATH_EDIT;
+	_resultEditID = IDC_HASH_RESULT_EDIT;
+}
+
 INT_PTR CALLBACK HashFromFilesDlg::run_dlgProc(UINT message, WPARAM wParam, LPARAM /*lParam*/)
 {
 	switch (message) 
 	{
-		case WM_INITDIALOG:
-		{
-			int fontDpiDynamicalHeight = NppParameters::getInstance()._dpiManager.scaleY(13);
-			HFONT hFont = ::CreateFontA(fontDpiDynamicalHeight, 0, 0, 0, 0, FALSE, FALSE, FALSE, ANSI_CHARSET,
-				OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-				DEFAULT_PITCH | FF_DONTCARE, "Courier New");
-
-			const HWND hHashPathEdit = ::GetDlgItem(_hSelf, IDC_HASH_PATH_EDIT);
-			const HWND hHashResult = ::GetDlgItem(_hSelf, IDC_HASH_RESULT_EDIT);
-
-			::SendMessage(hHashPathEdit, WM_SETFONT, reinterpret_cast<WPARAM>(hFont), TRUE);
-			::SendMessage(hHashResult, WM_SETFONT, reinterpret_cast<WPARAM>(hFont), TRUE);
-
-			::SetWindowLongPtr(hHashPathEdit, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
-			_oldHashPathEditProc = reinterpret_cast<WNDPROC>(::SetWindowLongPtr(hHashPathEdit, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HashPathEditStaticProc)));
-
-			::SetWindowLongPtr(hHashResult, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
-			_oldHashResultProc = reinterpret_cast<WNDPROC>(::SetWindowLongPtr(hHashResult, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HashResultStaticProc)));
-		}
-		return TRUE;
-
 		case WM_COMMAND : 
 		{
 			switch (wParam)
@@ -145,37 +186,7 @@ INT_PTR CALLBACK HashFromFilesDlg::run_dlgProc(UINT message, WPARAM wParam, LPAR
 			}
 		}
 	}
-	return FALSE;	
-}
-
-LRESULT run_textEditProc(WNDPROC oldEditProc, HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-	switch (message)
-	{
-		case WM_GETDLGCODE:
-		{
-			return DLGC_WANTALLKEYS | ::CallWindowProc(oldEditProc, hwnd, message, wParam, lParam);
-		}
-
-		case WM_CHAR:
-		{
-			if (wParam == 1) // Ctrl+A
-			{
-				::SendMessage(hwnd, EM_SETSEL, 0, -1);
-				return TRUE;
-			}
-			break;
-		}
-
-		default:
-			break;
-	}
-	return ::CallWindowProc(oldEditProc, hwnd, message, wParam, lParam);
-}
-
-void HashFromFilesDlg::setHashType(hashType hashType2set)
-{
-	_ht = hashType2set;
+	return HashDialog::run_dlgProc(message);
 }
 
 void HashFromFilesDlg::doDialog(bool isRTL)
@@ -197,6 +208,12 @@ void HashFromFilesDlg::doDialog(bool isRTL)
 	// Adjust the position in the center
 	goToCenter();
 };
+
+HashFromTextDlg::HashFromTextDlg()
+{
+	_originEditID = IDC_HASH_TEXT_EDIT;
+	_resultEditID = IDC_HASH_RESULT_FOMTEXT_EDIT;
+}
 
 void HashFromTextDlg::generateHash()
 {
@@ -296,27 +313,6 @@ INT_PTR CALLBACK HashFromTextDlg::run_dlgProc(UINT message, WPARAM wParam, LPARA
 {
 	switch (message) 
 	{
-		case WM_INITDIALOG:
-		{
-			int fontDpiDynamicalHeight = NppParameters::getInstance()._dpiManager.scaleY(13);
-			HFONT hFont = ::CreateFontA(fontDpiDynamicalHeight, 0, 0, 0, 0, FALSE, FALSE, FALSE, ANSI_CHARSET,
-				OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
-				DEFAULT_PITCH | FF_DONTCARE, "Courier New");
-
-			const HWND hHashTextEdit = ::GetDlgItem(_hSelf, IDC_HASH_TEXT_EDIT);
-			const HWND hHashResult = ::GetDlgItem(_hSelf, IDC_HASH_RESULT_FOMTEXT_EDIT);
-
-			::SendMessage(hHashTextEdit, WM_SETFONT, reinterpret_cast<WPARAM>(hFont), TRUE);
-			::SendMessage(hHashResult, WM_SETFONT, reinterpret_cast<WPARAM>(hFont), TRUE);
-
-			::SetWindowLongPtr(hHashTextEdit, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
-			_oldHashTextEditProc = reinterpret_cast<WNDPROC>(::SetWindowLongPtr(hHashTextEdit, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HashTextEditStaticProc)));
-
-			::SetWindowLongPtr(hHashResult, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(this));
-			_oldHashResultProc = reinterpret_cast<WNDPROC>(::SetWindowLongPtr(hHashResult, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HashResultStaticProc)));
-		}
-		return TRUE;
-
 		case WM_COMMAND : 
 		{
 			if (HIWORD(wParam) == EN_CHANGE && LOWORD(wParam) == IDC_HASH_TEXT_EDIT)
@@ -373,12 +369,7 @@ INT_PTR CALLBACK HashFromTextDlg::run_dlgProc(UINT message, WPARAM wParam, LPARA
 			}
 		}
 	}
-	return FALSE;	
-}
-
-void HashFromTextDlg::setHashType(hashType hashType2set)
-{
-	_ht = hashType2set;
+	return HashDialog::run_dlgProc(message);
 }
 
 void HashFromTextDlg::doDialog(bool isRTL)
