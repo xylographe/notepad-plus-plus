@@ -15,7 +15,7 @@
 	<Native-Langue name="Deutsch" filename="german.xml" version="7.8.7">
 		<Menu>
 			<Main>
-                <!-- Main Menu Entries -->
+				<!-- Main Menu Entries -->
 				<Entries>
 					<Item menuId="file" name="&amp;Datei"/>
 					<Item menuId="edit" name="&amp;Bearbeiten"/>
@@ -30,7 +30,7 @@
 					<Item idName="Plugins" name="Er&amp;weiterungen"/>
 					<Item idName="Window" name="Fe&amp;nster"/>
 				</Entries>
-                <!-- Sub Menu Entries -->
+				<!-- Sub Menu Entries -->
 				<SubEntries>
 					<Item subMenuId="file-openFolder" name="Aktuellen &amp;Ordner öffnen"/>
 					<Item subMenuId="file-closeMore" name="&amp;Mehrere schließen"/>
@@ -81,7 +81,7 @@
 					<Item subMenuId="tools-sha256" name="SHA-256"/>
 				</SubEntries>
 
-                <!-- all menu item -->
+				<!-- All Menu Items -->
 				<Commands>
 					<Item id="41001" name="&amp;Neu"/>
 					<Item id="41002" name="&amp;Öffnen …"/>
@@ -1015,7 +1015,7 @@
 			</DoSaveOrNot>
 		</Dialog>
 		<MessageBox> <!-- $INT_REPLACE$ is a place holder, don't translate it -->
-			<ContextMenuXmlEditWarning title="Kontextmenü anpassen" message="Durch Bearbeiten der Datei contextMenu.xml können Sie&#x0A;das Kontextmenü von Notepad++ anpassen.&#x0A;Nach dem Bearbeiten müssen Sie Notepad++ neu&#x0A;starten, damit die Änderungen wirksam werden."/>
+			<ContextMenuXmlEditWarning title="Kontextmenü anpassen" message="Durch Bearbeiten der Datei 'contextMenu.xml' können Sie&#x0A;das Kontextmenü von Notepad++ anpassen.&#x0A;Nach dem Bearbeiten müssen Sie Notepad++ neu&#x0A;starten, damit die Änderungen wirksam werden."/>
 			<NppHelpAbsentWarning title="Fehlende Hilfedatei" message="&#x0A;wurde nicht gefunden. Bitte laden Sie die Hilfedateien&#x0A;von der Notepad++-Website herunter."/>
 			<SaveCurrentModifWarning title="Änderungen speichern" message="Bitte speichern Sie Ihre Änderungen.&#x0A;&#x0A;Fortfahren?"/>
 			<LoseUndoAbilityWarning title="Änderungen können nicht rückgängig gemacht werden" message="Diese Änderung kann nicht rückgängig gemacht werden.&#x0A;&#x0A;Fortfahren?"/>
