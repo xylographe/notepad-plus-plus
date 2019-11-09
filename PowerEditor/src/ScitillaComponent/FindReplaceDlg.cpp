@@ -53,14 +53,14 @@ void addText2Combo(const TCHAR * txt2add, HWND hCombo)
 
 	i = ::SendMessage(hCombo, CB_INSERTSTRING, 0, reinterpret_cast<LPARAM>(txt2add));
 	::SendMessage(hCombo, CB_SETCURSEL, i, 0);
-};
+}
 
 generic_string getTextFromCombo(HWND hCombo)
 {
 	TCHAR str[FINDREPLACE_MAXLENGTH];
 	::SendMessage(hCombo, WM_GETTEXT, FINDREPLACE_MAXLENGTH - 1, reinterpret_cast<LPARAM>(str));
 	return generic_string(str);
-};
+}
 
 void delLeftWordInEdit(HWND hEdit)
 {
@@ -453,10 +453,10 @@ int FindReplaceDlg::saveComboHistory(int id, int maxcount, vector<generic_string
 	int count = static_cast<int32_t>(::SendMessage(hCombo, CB_GETCOUNT, 0, 0));
 	count = min(count, maxcount);
 
-    if (count == CB_ERR) return 0;
+	if (count == CB_ERR) return 0;
 
-    if (count)
-        strings.clear();
+	if (count)
+		strings.clear();
 
 	if (saveEmpty)
 	{
@@ -466,7 +466,7 @@ int FindReplaceDlg::saveComboHistory(int id, int maxcount, vector<generic_string
 		}
 	}
 
-    for (int i = 0 ; i < count ; ++i)
+	for (int i = 0 ; i < count ; ++i)
 	{
 		auto cbTextLen = ::SendMessage(hCombo, CB_GETLBTEXTLEN, i, 0);
 		if (cbTextLen <= FINDREPLACE_MAXLENGTH - 1)
@@ -475,7 +475,7 @@ int FindReplaceDlg::saveComboHistory(int id, int maxcount, vector<generic_string
 			strings.push_back(generic_string(text));
 		}
 	}
-    return count;
+	return count;
 }
 
 void FindReplaceDlg::updateCombos()

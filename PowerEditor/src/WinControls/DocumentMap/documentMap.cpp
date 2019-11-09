@@ -484,7 +484,7 @@ void ViewZoneDlg::doDialog()
 		create(win10 ? IDD_VIEWZONE : IDD_VIEWZONE_CLASSIC);
 	}
 	display();
-};
+}
 
 INT_PTR CALLBACK ViewZoneDlg::run_dlgProc(UINT message, WPARAM wParam, LPARAM lParam)
 {

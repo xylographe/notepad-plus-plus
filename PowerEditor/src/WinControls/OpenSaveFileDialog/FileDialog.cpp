@@ -39,7 +39,7 @@ FileDialog *FileDialog::staticThis = NULL;
 FileDialog::FileDialog(HWND hwnd, HINSTANCE hInst)
 {
 	staticThis = this;
-    
+
 	memset(_fileName, 0, sizeof(_fileName));
 	_winVersion = (NppParameters::getInstance()).getWinVersion();
 
@@ -412,7 +412,7 @@ static LRESULT CALLBACK fileDlgProc(HWND hwnd, UINT message, WPARAM wParam, LPAR
 		}
 	}
 	return oldProc(hwnd, message, wParam, lParam);
-};
+}
 
 
 static TCHAR * get1stExt(TCHAR *ext)
@@ -426,7 +426,7 @@ static TCHAR * get1stExt(TCHAR *ext)
 	if (*begin == '*')
 		*begin = '\0';
 	return begin;
-};
+}
 
 static generic_string addExt(HWND textCtrl, HWND typeCtrl)
 {
@@ -449,7 +449,7 @@ static generic_string addExt(HWND textCtrl, HWND typeCtrl)
 	generic_string returnExt = pExt;
 	delete[] ext;
 	return returnExt;
-};
+}
 
 UINT_PTR CALLBACK FileDialog::OFNHookProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {

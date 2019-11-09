@@ -207,7 +207,7 @@ void HashFromFilesDlg::doDialog(bool isRTL)
 
 	// Adjust the position in the center
 	goToCenter();
-};
+}
 
 HashFromTextDlg::HashFromTextDlg()
 {
@@ -387,4 +387,4 @@ void HashFromTextDlg::doDialog(bool isRTL)
 
 	// Adjust the position in the center
 	goToCenter();
-};
+}
