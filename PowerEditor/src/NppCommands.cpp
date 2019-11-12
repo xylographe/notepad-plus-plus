@@ -3513,6 +3513,11 @@ void Notepad_plus::command(int id)
 			case IDM_FORMAT_TODOS  :
 			case IDM_FORMAT_TOUNIX :
 			case IDM_FORMAT_TOMAC  :
+			case IDM_FORMAT_CONV2_ANSI    :
+			case IDM_FORMAT_CONV2_AS_UTF_8:
+			case IDM_FORMAT_CONV2_UTF_8   :
+			case IDM_FORMAT_CONV2_UCS_2BE :
+			case IDM_FORMAT_CONV2_UCS_2LE :
 			case IDM_VIEW_IN_FIREFOX :
 			case IDM_VIEW_IN_CHROME  :
 			case IDM_VIEW_IN_EDGE    :
