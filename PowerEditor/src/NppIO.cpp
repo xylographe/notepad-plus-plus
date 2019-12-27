@@ -983,8 +983,7 @@ bool Notepad_plus::fileCloseAll(bool doDeleteBackup, bool isSnapshotMode)
 				}
 				else
 				{
-					size_t nbDirtyFiles = MainFileManager.getNbDirtyBuffers();
-					res = doSaveOrNot(buf->getFullPathName(), nbDirtyFiles > 1);
+					res = doSaveOrNot(buf->getFullPathName(), true);
 				}
 
 				if (res == IDYES)
@@ -1065,8 +1064,7 @@ bool Notepad_plus::fileCloseAll(bool doDeleteBackup, bool isSnapshotMode)
 				}
 				else
 				{
-					size_t nbDirtyFiles = MainFileManager.getNbDirtyBuffers();
-					res = doSaveOrNot(buf->getFullPathName(), nbDirtyFiles > 1);
+					res = doSaveOrNot(buf->getFullPathName(), true);
 				}
 
 				if (res == IDYES)
@@ -1122,17 +1120,6 @@ bool Notepad_plus::fileCloseAllGiven(const std::vector<int>& krvecBufferIndexes)
 	bool saveToAll = false;
 	std::vector<int> bufferIndexesToClose;
 
-	// Count the number of dirty file
-	size_t nbDirtyFiles = 0;
-	for (const auto& index : krvecBufferIndexes)
-	{
-		BufferID id = _pDocTab->getBufferByIndex(index);
-		Buffer* buf = MainFileManager.getBufferByID(id);
-
-		if (buf->isDirty())
-			++nbDirtyFiles;
-	}
-
 	for (const auto& index : krvecBufferIndexes)
 	{
 		BufferID id = _pDocTab->getBufferByIndex(index);
@@ -1163,9 +1150,8 @@ bool Notepad_plus::fileCloseAllGiven(const std::vector<int>& krvecBufferIndexes)
 			*	IDNO		: No
 			*	IDIGNORE	: No To All
 			*	IDCANCEL	: Cancel Opration
-			*/			
-
-			int res = saveToAll ? IDYES : doSaveOrNot(buf->getFullPathName(), nbDirtyFiles > 1);
+			*/
+			int res = saveToAll ? IDYES : doSaveOrNot(buf->getFullPathName(), true);
 
 			if (res == IDYES || res == IDRETRY)
 			{
@@ -1283,13 +1269,7 @@ bool Notepad_plus::fileCloseAllButCurrent()
 			}
 			else
 			{
-				size_t nbDirtyFiles = MainFileManager.getNbDirtyBuffers();
-
-				// if current file is dirty, if should be removed from dirty files to make nbDirtyFiles accurate
-				Buffer* currentBuf = MainFileManager.getBufferByID(current);
-				nbDirtyFiles -= currentBuf->isDirty() ? 1 : 0;
-
-				res = doSaveOrNot(buf->getFullPathName(), nbDirtyFiles > 1);
+				res = doSaveOrNot(buf->getFullPathName(), true);
 			}
 
 			if (res == IDYES)
@@ -1353,13 +1333,7 @@ bool Notepad_plus::fileCloseAllButCurrent()
 			}
 			else
 			{
-				size_t nbDirtyFiles = MainFileManager.getNbDirtyBuffers();
-
-				// if current file is dirty, if should be removed from dirty files to make nbDirtyFiles accurate
-				Buffer* currentBuf = MainFileManager.getBufferByID(current);
-				nbDirtyFiles -= currentBuf->isDirty() ? 1 : 0;
-
-				res = doSaveOrNot(buf->getFullPathName(), nbDirtyFiles > 1);
+				res = doSaveOrNot(buf->getFullPathName(), true);
 			}
 
 

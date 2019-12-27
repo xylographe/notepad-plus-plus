@@ -67,8 +67,6 @@ public:
     void changePrefereceDlgLang(PreferenceDlg & preference);
 	void changePluginsAdminDlgLang(PluginsAdminDlg & pluginsAdminDlg);
 
-	bool getDoSaveOrNotStrings(generic_string& title, generic_string& msg);
-
     bool isRTL() const {
         return _isRTL;
     };
