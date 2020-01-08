@@ -23,7 +23,7 @@
                     <Item subMenuId="file-openFolder" name="Ouvrir le répertoire du fichier en cours"/>
                     <Item subMenuId="file-closeMore" name="Fermer +"/>
                     <Item subMenuId="file-recentFiles" name="Fichiers récents"/>
-                    <Item subMenuId="edit-copyToClipboard"  name="Copier dans le presse-papiers"/>
+                    <Item subMenuId="edit-copyToClipboard" name="Copier dans le presse-papiers"/>
                     <Item subMenuId="edit-indent" name="Indentation"/>
                     <Item subMenuId="edit-convertCaseTo" name="MAJUSCULE/minuscule"/>
                     <Item subMenuId="edit-lineOperations" name="Ligne"/>
@@ -40,9 +40,9 @@
                     <Item subMenuId="search-bookmark" name="Signet"/>
                     <Item subMenuId="view-currentFileIn" name="Afficher le fichier dans"/>
                     <Item subMenuId="view-showSymbol" name="Symboles spéciaux"/>
-                    <Item subMenuId="view-zoom"  name="Zoom"/>
-                    <Item subMenuId="view-moveCloneDocument"  name="Déplacer/Cloner le document actuel"/>
-                    <Item subMenuId="view-tab"  name="Onglet"/>
+                    <Item subMenuId="view-zoom" name="Zoom"/>
+                    <Item subMenuId="view-moveCloneDocument" name="Déplacer/Cloner le document actuel"/>
+                    <Item subMenuId="view-tab" name="Onglet"/>
                     <Item subMenuId="view-collapseLevel" name="Replier le niveau"/>
                     <Item subMenuId="view-uncollapseLevel" name="Déplier le niveau"/>
                     <Item subMenuId="view-project" name="Projet"/>
@@ -64,9 +64,9 @@
                     <Item subMenuId="encoding-westernEuropean" name="Langues d’Europe occidentale"/>
                     <Item subMenuId="encoding-vietnamese" name="Vietnamien"/>
                     <Item subMenuId="language-userDefinedLanguage" name="Langage utilisateur"/>
-                    <Item subMenuId="settings-import"  name="Importer"/>
-                    <Item subMenuId="tools-md5"  name="MD5"/>
-                    <Item subMenuId="tools-sha256"  name="SHA-256"/>
+                    <Item subMenuId="settings-import" name="Importer"/>
+                    <Item subMenuId="tools-md5" name="MD5"/>
+                    <Item subMenuId="tools-sha256" name="SHA-256"/>
                 </SubEntries>
 
                 <!-- all menu item -->
@@ -286,7 +286,7 @@
                     <Item id="45054" name="OEM 861: islandais"/>
                     <Item id="45057" name="OEM 865: danois &amp;&amp; norvégien"/>
                     <Item id="45053" name="OEM 860: portugais"/>
-                    <Item id="45056" name="OEM 863: français"/>
+                    <Item id="45056" name="OEM 863: français canadien"/>
                     <Item id="46001" name="Configurateur de coloration syntaxique..."/>
                     <Item id="46250" name="Définir votre langage..."/>
                     <Item id="46300" name="Ovrir le dossier des Langages utilisateur..."/>
@@ -447,7 +447,7 @@
                 <Item id="2"    name="Fermer"/>
             </SHA256FromTextDlg>
 
-            <PluginsAdminDlg title="Gestionnaire des modules d'extension" titleAvailable = "Disponibles" titleUpdates = "Mises à jour" titleInstalled = "Installés">
+            <PluginsAdminDlg title="Gestionnaire des modules d'extension" titleAvailable="Disponibles" titleUpdates="Mises à jour" titleInstalled="Installés">
                 <ColumnPlugin   name="Modules d'extension"/>
                 <ColumnVersion  name="Version"/>
                 <Item id="5501" name="Recherche : "/>
@@ -502,7 +502,7 @@
                 <MacrosTab name="Macros"/>
                 <RunCommandsTab name="Exécution"/>
                 <PluginCommandsTab name="Commandes de Plugin"/>
-                <ScintillaCommandsTab name="Commandes de Scintilla "/>
+                <ScintillaCommandsTab name="Commandes de Scintilla"/>
                 <ConflictInfoOk name="Pas de conflit pour cet élément."/>
                 <ConflictInfoEditing name="Pas de conflit . . ."/>
             </ShortcutMapper>
@@ -929,7 +929,7 @@ Vous pouvez définir plusieurs marqueurs de colonne en utilisant un espace pour 
                     <Item id="6325" name="Aller à la dernière ligne après mise à jour"/>
                     <Item id="6331" name="Afficher seulement le nom du fichier dans la barre de titre"/>
                     <Item id="6334" name="Détecter l'encodage automatiquement"/>
-                    <Item id="6314" name="Activer la police à espacement fixe dans la boîte de dialogue Rechercher (Nécessité de redémarrage)"/>
+                    <Item id="6314" name="Activer la police à chasse fixe dans la boîte de dialogue Rechercher (Nécessité de redémarrage)"/>
                     <Item id="6337" name="Ext. fichier espace de travail :"/>
                     <Item id="6344" name="Aperçu du document"/>
                     <Item id="6345" name="Aperçu à onglet"/>
