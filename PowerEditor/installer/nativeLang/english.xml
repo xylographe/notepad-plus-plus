@@ -23,7 +23,7 @@
                     <Item subMenuId="file-openFolder" name="Open Containing Folder"/>
                     <Item subMenuId="file-closeMore" name="Close More"/>
                     <Item subMenuId="file-recentFiles" name="&amp;Recent Files"/>
-                    <Item subMenuId="edit-copyToClipboard"  name="Copy to Clipboard"/>
+                    <Item subMenuId="edit-copyToClipboard" name="Copy to Clipboard"/>
                     <Item subMenuId="edit-indent" name="Indent"/>
                     <Item subMenuId="edit-convertCaseTo" name="Convert Case to"/>
                     <Item subMenuId="edit-lineOperations" name="Line Operations"/>
@@ -452,7 +452,7 @@
                 <Item id="2"    name="Close"/>
             </SHA256FromTextDlg>
             
-            <PluginsAdminDlg title="Plugins Admin" titleAvailable = "Available" titleUpdates = "Updates" titleInstalled = "Installed">
+            <PluginsAdminDlg title="Plugins Admin" titleAvailable="Available" titleUpdates="Updates" titleInstalled="Installed">
                 <ColumnPlugin   name="Plugin"/>
                 <ColumnVersion  name="Version"/>
                 <Item id="5501" name="Search:"/>
