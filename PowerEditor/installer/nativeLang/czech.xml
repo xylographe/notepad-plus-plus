@@ -922,7 +922,6 @@ Můžete definovat více značek sloupců použitím více čísel oddělených 
 						<Element name = "Zakázáno"/>
 					</ComboBox>
 					<Item id = "6114" name = "Povolit přepínání"/>
-					<Item id = "6115" name = "Automatické odsazování"/>
 					<Item id = "6117" name = "Povolit MRU (nedávno použité)"/>
 					<Item id = "6307" name = "Povolit pro všechny TABy"/>
 					<Item id = "6308" name = "Minimalizovat do oznamovací oblasti"/>

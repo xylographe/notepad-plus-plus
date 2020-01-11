@@ -855,6 +855,7 @@ By Hiro5 <groccat at gmail>
 					<Item id="6803" name="Directori:"/>
 				</Backup>
 				<AutoCompletion title="Autocompleció">
+					<Item id="6115" name="Sagnat automàtic"/>
 					<Item id="6807" name="Autocompleció"/>
 					<Item id="6808" name="Permetre Autocompleció a cada entrada"/>
 					<Item id="6809" name="Autocompleta funcions"/>
@@ -908,7 +909,6 @@ By Hiro5 <groccat at gmail>
 					<Item id="6346" name="Previsualitza en el mapa del document"/>
 					<Item id="6334" name="Autodetecta codificació de caràcters"/>
 					<Item id="6314" name="Empra lletra monoespai al diàleg de cerca (demana reiniciar Notepad++)"/>
-					<Item id="6115" name="Sagnat automàtic"/>
 					<Item id="6308" name="Minimitza a la safata del sistema"/>
 					<Item id="6331" name="Mostra només el nom de fitxer a la barra de títol"/>
 					<Item id="6323" name="Actualitza Notepad++ automàticament"/>
