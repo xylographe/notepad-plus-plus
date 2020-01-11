@@ -1551,7 +1551,7 @@ Složka &quot;$STR_REPLACE2$&quot; neexistuje."/>
 			<LoadLangsFailedFinal title="Konfigurátor" message="Nepodařilo se načíst soubor langs.xml!"/>
 			<FolderAsWorspaceSubfolderExists title="Problém s přidáváním složek do Složky jako pracovní plochy" message="Podsložka složky, kterou chcete přidat, již existuje. Odeberte její kořenovou složku prosím z panelu předtím, než přidáte složku &quot;$STR_REPLACE$&quot;."/>
 			<ProjectPanelChanged title="$STR_REPLACE$" message="Pracovní plocha byla modifikována. Přejete si ji uložit?"/>
-			<ProjectPanelSaveError title="$STR_REPLACE$" message="Při ukládání souboru Vaší pracovní plochy došlo k chybě. 
+			<ProjectPanelSaveError title="$STR_REPLACE$" message="Při ukládání souboru Vaší pracovní plochy došlo k chybě.
 Vaše pracovní plocha nebyla uložena."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<ProjectPanelOpenDoSaveDirtyWsOrNot title="Otevření pracovní plochy" message="Nyní používaná pracovní plocha byla modifikována. Přejete si uložit současný projekt?"/>
 			<ProjectPanelNewDoSaveDirtyWsOrNot title="Nová pracovní plocha" message="Nyní používaná pracovní plocha byla modifikována. Přejete si uložit současný projekt?"/>
