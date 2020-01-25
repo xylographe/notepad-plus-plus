@@ -236,7 +236,7 @@ static inline bool isWhiteSpace2(unsigned char ch, int & nlCount, unsigned char 
 static bool isInListForward2(vvstring * fwEndVectors[], int totalVectors, StyleContext & sc, bool ignoreCase, int forward)
 {
     // forward check for multi-part keywords and numbers
-    // this is differnt from 'isInListForward' function because
+    // this is different from 'isInListForward' function because
     // search for keyword is not performed at sc.currentPos but rather
     // at some position forward of sc.currentPos
 
@@ -338,6 +338,7 @@ static bool IsNumber(StyleContext & sc, vector<string> * numberTokens[], vvstrin
     bool hasRange = false;
     bool hasExp = false;
     bool previousWasRange = false;
+    unsigned char ch = '\0';
     Sci_Position offset = 0;
 
     vector<string> * prefixTokens1          = numberTokens[0];
@@ -468,8 +469,13 @@ static bool IsNumber(StyleContext & sc, vector<string> * numberTokens[], vvstrin
     {
         skipForward = 0;
 
-        // if (isInListForward2(fwEndVectors, (*fwEndVectors)->size(), sc, ignoreCase, offset)  || isWhiteSpace(sc.GetRelative(offset)))
-        if (isWhiteSpace(sc.GetRelative(offset)) || isInListForward2(fwEndVectors, 12, sc, ignoreCase, offset))
+        // This code assumes the only '\0' char is the end of text.
+        // Change Scintilla's (and C's) end of string character '\0'
+        // to a space so we can exit this loop.
+        ch = sc.GetRelative(offset);
+        if (ch == '\0')
+            ch = ' ';
+        if (isWhiteSpace(ch) || isInListForward2(fwEndVectors, 12, sc, ignoreCase, offset))
         {
             if (hasExtras2 == true && hasSuffix1 == false)
                 return false;
@@ -923,7 +929,7 @@ static inline void ReColoringCheck(Sci_PositionU & startPos, int & nestedLevel, 
 
 static bool isInListForward(vvstring & openVector, StyleContext & sc, bool ignoreCase, int & openIndex, size_t & skipForward)
 {
-    // forward check for standard (sigle part) keywords
+    // forward check for standard (single part) keywords
 
     skipForward = 0;
     vector<vector<string>>::iterator iter1 = openVector.begin();
@@ -1653,8 +1659,6 @@ static void ColouriseUserDoc(Sci_PositionU startPos, Sci_Position length, int in
     {
         dontMove = false;
         checkEOL = EOL_DEFAULT_VALUE;
-        if (sc.More() == false)
-            finished = false;   // colorize last word, even if file does not end with whitespace char
 
         switch (sc.state)
         {
@@ -1674,6 +1678,26 @@ static void ColouriseUserDoc(Sci_PositionU startPos, Sci_Position length, int in
                 numberDelims = numberDelimSeparators[index];
                 prevState    = sc.state;
                 newState     = sc.state;
+
+//          This code implements a forward keyword list option
+//          by defining an action for a delimiter with no close list entries.
+//          There is no reason to have any entries in the escape list, in this case
+//          basically it treats anything in the open list as a keyword.
+
+                if ((*delimClose)[openIndex].begin() == (*delimClose)[openIndex].end())
+                {
+                    // lack of closing string indicates this is a forward keyword list
+                    // we are done with this item continue with the prior state
+
+                    // was current delimiter sequence nested, or do we start over from SCE_USER_STYLE_IDENTIFIER?
+                    readLastNested(lastNestedGroup, newState, openIndex);
+
+                    // paint end of delimiter sequence
+                    sc.SetState(newState);
+
+                    dontMove = true;
+                    break;
+                }
 
                 // first, check escape sequence
                 bool loopEscape = true;
@@ -2302,7 +2326,27 @@ static void ColouriseUserDoc(Sci_PositionU startPos, Sci_Position length, int in
         }
 
         if (!dontMove)
+        {
             sc.Forward();
+
+            // This code assumes the only '\0' char is the end of text.
+            // If we are processing the last real text char, adjust what
+            // scintilla sends to what this program will process correctly.
+            if (sc.chNext == 0 && sc.ch != 0)
+                sc.chNext = ' ';
+            else
+                // If we are processing the char after the last real text char, adjust
+                // what scintilla sends to what this program will process correctly.
+                if (sc.chNext == 0 && sc.ch == 0)
+                    sc.ch = ' ';
+        }
+
+        if (sc.More() == false)
+        {
+            // we are two characters beyond the end of the real text now
+            // see increment of eolPos in StyleContent.h lines 83-84
+            finished = false;
+        }
     }
     sc.Complete();
 }
