@@ -132,7 +132,7 @@ SectionGroup "Themes" Themes
 
 	${MementoSection} "DansLeRuSH Dark" DansLeRuSHDark
 		SetOutPath "$UPDATE_PATH\themes"
-		File ".\themes\DansLeRuSH-Dark.xml"
+		File ".\themes\DansLeRuSH-dark.xml"
 	${MementoSectionEnd}
 SectionGroupEnd
 
@@ -261,7 +261,7 @@ SectionGroup un.Themes
 
 	Section un.DansLeRuSHDark
 	${If} $keepUserData == "false"
-		Delete "$installPath\themes\DansLeRuSH-Dark.xml"
+		Delete "$installPath\themes\DansLeRuSH-dark.xml"
 	${endIf}
 	SectionEnd
 	
