@@ -176,7 +176,7 @@ void AutoCompletion::getWordArray(vector<generic_string> & wordArray, TCHAR *beg
 		{
 			TCHAR w[bufSize];
 			_pEditView->getGenericText(w, bufSize, wordStart, wordEnd);
-			if (!allChars || (generic_strncmp (w, allChars, bufSize) != 0))
+			if (!allChars || generic_strncmp(w, allChars, bufSize))
 			{
 				if (!isInList(w, wordArray))
 					wordArray.push_back(w);
